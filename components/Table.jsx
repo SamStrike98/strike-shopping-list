@@ -60,7 +60,7 @@ const Table = ({ items }) => {
     // }
 
     return (
-        <div className="overflow-x-auto h-[calc(100vh - 70px)]">
+        <div className="overflow-x-auto h-[calc(100vh - 100px)]">
             <div className="flex flex-row justify-center mt-5"><ItemsCount itemsAmount={items.length} /></div>
             <div className="overflow-y-scroll h-[60vh]">
                 <table className="table table-zebra ">
