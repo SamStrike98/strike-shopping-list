@@ -2,6 +2,7 @@ import React from 'react'
 import LightDarkToggle from './LightDarkToggle'
 import { FaShoppingCart } from "react-icons/fa";
 import { FaListUl } from "react-icons/fa";
+import Link from 'next/link';
 
 
 const Navbar = () => {
@@ -52,17 +53,17 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal" >
                             {/* Navbar menu content here */}
 
-                            <li><a>Navbar Item 1</a></li>
+                            <li><Link href={'/list'}>List</Link></li>
                             <li><a>Navbar Item 2</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side z-50">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 min-h-full w-80 p-4">
                     {/* Sidebar content here */}
-                    <li><a>Sidebar Item 1</a></li>
+                    <li><Link href={'/list'}>List</Link></li>
                     <li><a>Sidebar Item 2</a></li>
                 </ul>
             </div>

@@ -26,3 +26,24 @@ export async function removeItem(itemId) {
         throw new Error(error)
     }
 }
+
+export async function updateItem(id, { name, quantity, regularItem }) {
+    try {
+        const item = await Item.findOneAndUpdate(
+            { _id: id },
+            { name: name, quantity: quantity, regularItem: regularItem }
+        );
+        return item;
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+export async function getItemById(id) {
+    try {
+        const item = await Item.findById(id);
+        return item
+    } catch (error) {
+        throw new Error(error)
+    }
+}
