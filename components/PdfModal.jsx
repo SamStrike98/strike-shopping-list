@@ -22,7 +22,7 @@ const PdfModal = ({ list }) => {
 
                     <div className='flex flex-col gap-4'>
 
-                        <embed src={list.data} type="application/pdf" width="100%" height="650px" />
+                        <iframe src={list.data} type="application/pdf" width="400" height="500"></iframe>
 
                     </div>
 
