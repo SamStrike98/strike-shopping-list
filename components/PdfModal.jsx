@@ -16,7 +16,7 @@ const PdfModal = ({ list }) => {
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             {/* <div className='flex flex-row justify-center'> <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Add Item</button></div> */}
             <span className='cursor-pointer' onClick={handleOpenModal}>{list.name}</span>
-            <dialog id={`update_modal${list._id}`} className="modal modal-bottom sm:modal-middle">
+            <dialog id={`update_modal${list._id}`} className="bg-blue-500 modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">PDF</h3>
 
