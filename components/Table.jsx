@@ -8,56 +8,27 @@ import { useRouter } from "next/navigation";
 import UpdateItemModelForm from "./UpdateItemModalForm";
 import DeleteItemModelForm from "./DeleteItemModalForm";
 
-// const items = [
-//     {
-//         id: 1,
-//         name: 'Bananas',
-//         quantity: 2,
-//         regurlarItem: true
-//     },
-//     {
-//         id: 2,
-//         name: 'Apples',
-//         quantity: 1,
-//         regurlarItem: true
-//     },
-//     {
-//         id: 3,
-//         name: 'Pears',
-//         quantity: 1,
-//         regurlarItem: true
-//     },
-//     {
-//         id: 4,
-//         name: 'Deodorant',
-//         quantity: 1,
-//         regurlarItem: false
-//     },
-// ]
 
 const Table = ({ items }) => {
     const router = useRouter();
-    const [search, setSearch] = useState('')
+    const [search, setSearch] = useState('');
+    const [filter, setFilter] = useState('e');
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
 
-    // const handleDelete = async (id) => {
+    const handleSelectChange = (e) => {
+        console.log(e.target.value)
 
+        let value = e.target.value;
 
-    //     const response = await fetch(`/api/item/${id}`, {
-    //         method: 'DELETE',
-    //     });
+        if (value === "true" || value === "false") {
+            setFilter(value)
+        } else {
+            setFilter('e')
+        }
+    }
 
-    //     if (response.status === 201) {
-    //         alert('Item Deleted')
-    //         router.refresh()
-    //     } else {
-    //         alert('Item not deleted')
-    //     }
-
-    //     console.log(id)
-    // }
 
     return (
         <div className="overflow-x-auto h-[calc(100vh - 100px)]">
@@ -78,11 +49,15 @@ const Table = ({ items }) => {
                             {/* <td></td> */}
                             <td><input type="text" placeholder="Search items" className="input input-bordered w-full max-w-xs" onChange={handleChange} /></td>
                             <td></td>
-                            <td></td>
+                            <td><select onChange={handleSelectChange} className="select select-bordered w-full max-w-xs">
+                                <option value={null} defaultValue>All Items</option>
+                                <option value={true}>Regular Items</option>
+                                <option value={false}>Unregular Items</option>
+                            </select></td>
                             <td></td>
                         </tr>
                         {/* row 1 */}
-                        {items ? items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).reverse().map(item => (
+                        {items ? items.filter(item => item.name.toLowerCase().includes(search.toLowerCase()) && item.regularItem.toString().includes(filter)).reverse().map(item => (
                             <tr key={item._id} className='text-center'>
                                 {/* <td>{item._id}</td> */}
                                 <td>{item.name}</td>
@@ -93,8 +68,6 @@ const Table = ({ items }) => {
                                     <DeleteItemModelForm item={item} />
                                     <UpdateItemModelForm prevItem={item} />
                                 </td>
-
-
                             </tr>
                         ))
                             :

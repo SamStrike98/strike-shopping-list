@@ -8,6 +8,7 @@ const UpdateItemModelForm = ({ prevItem }) => {
     const [regularItem, setReqularItem] = useState(true);
 
 
+
     const router = useRouter()
 
 
@@ -17,10 +18,15 @@ const UpdateItemModelForm = ({ prevItem }) => {
     const [error, setError] = useState('')
     const [added, setAdded] = useState(false)
 
+    const handleChange = () => {
+
+    }
+
     const handleOpenModal = () => {
         setName(prevItem.name)
         setQuantity(prevItem.quantity)
         setReqularItem(prevItem.regularItem)
+
         document.getElementById(`update_modal${prevItem._id}`).showModal()
     }
 
